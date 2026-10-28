@@ -32,17 +32,17 @@ flowchart LR
 
 The diagram summarizes the documented v3 baseline and source structure; it is not an audio-performance measurement.
 
-## Verified technologies
+## Technology Stack
 
 HTML and JavaScript with browser Web Audio, Canvas, pointer/touch and local-storage APIs. The selected baseline does not require a server-side application or account system for its local preset behavior.
 
-## Implemented capabilities visible in source
+## Implemented Capabilities
 
 - Standalone HTML/JavaScript baseline and separate synthesis-layer modules.
 - Web Audio context initialization behind user interaction.
 - Touch/pointer controls, gesture handling and canvas visualizations.
 - Default and user-saved preset management through browser local storage.
-- Project notes documenting manual checks and remaining compatibility work.
+- Project documentation records manual interaction checks and remaining compatibility work.
 
 ## Technical challenges and design decisions
 
@@ -54,7 +54,7 @@ HTML and JavaScript with browser Web Audio, Canvas, pointer/touch and local-stor
 
 ## Current status and limitations
 
-Project notes report successful checks for core controls, touch, visualizations, micro-texture and special gestures. They also list browser/device coverage and long-session console checks as remaining work, and the recovery notes have checklist entries whose chronology should be reconciled before publication. This preparation did not launch the instrument or verify sound output.
+Project documentation records manual interaction checks for core controls, touch, visualizations, micro-texture, and special gestures. Cross-browser and device compatibility, long-session behavior, and audio output quality and performance have not been established.
 
 Voice control, the older v5.2 modular branch, hardware integration and plugin formats are not part of the selected baseline. The project is an experimental creative instrument, not a finished audio product.
 
@@ -65,8 +65,3 @@ Voice control, the older v5.2 modular branch, hardware integration and plugin fo
 - A compact baseline is a better demonstration than a larger branch with unverified features.
 - Local-only state should be described clearly so users do not expect cloud synchronization.
 
-## Evidence checked
-
-Private-source review covered the project overview, selected browser baseline, synthesis and gesture components, local preset manager, and recovery, roadmap and inventory notes. Exact private source paths are intentionally omitted.
-
-**Confidence:** high for the baseline structure and local preset behavior; medium for previously documented interactions; audio output, compatibility and performance not rechecked.

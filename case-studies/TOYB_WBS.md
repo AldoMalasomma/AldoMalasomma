@@ -1,6 +1,6 @@
 # TOYB World Building System
 
-**A file-based system for structured narrative worlds and AI-assisted analysis**  
+**Structured narrative modeling, validation, and graph analysis**  
 **Source:** private development repository  
 **Status:** private product prototype; production readiness not assessed
 
@@ -8,7 +8,7 @@
 
 TOYB's World Building System (WBS) models narrative projects as linked, structured data. The design keeps source material in files and makes relationships, validation and graph analysis available to both a web application and programmatic tools.
 
-This write-up discusses software architecture only. It contains no story text, manuscript excerpts, private world names, character details or project datasets.
+The case study focuses on the software architecture and does not reproduce narrative text, private world names, character details, or project datasets.
 
 ## Engineering problem
 
@@ -16,7 +16,7 @@ Large creative projects accumulate entities and cross-references across files. U
 
 ## Architectural approach
 
-The inspected repository contains a Python WBS library for loading, validating and analyzing structured content, a FastAPI service with domain routers and workspace/auth components, and a React/Vite frontend with typed state and graph-oriented UI code. YAML and JSON are supported as project data formats. The pipeline can report validation and relationship information; graph analysis computes structural summaries from nodes and edges.
+The system combines a Python WBS library for loading, validating, and analyzing structured content with a FastAPI service, domain routers, workspace/auth components, and a React/Vite frontend with typed state and graph-oriented UI code. YAML and JSON are supported as project data formats. The pipeline reports validation and relationship information; graph analysis computes structural summaries from nodes and edges.
 
 ```mermaid
 flowchart LR
@@ -30,20 +30,20 @@ flowchart LR
     R --> UI
 ```
 
-The diagram abstracts the canonical source. It does not include private content or deployment details.
+The diagram summarizes the system flow without exposing project content or deployment details.
 
-## Verified technologies
+## Technology Stack
 
 Python and FastAPI on the service side; React, Vite and TypeScript in the frontend; Cytoscape-related graph visualization dependencies; YAML and JSON as documented project-data formats.
 
-## Implemented capabilities visible in source
+## Implemented Capabilities
 
 - Python loader and validation pipeline for structured project data.
 - Graph-analysis helpers for connected content and relationship summaries.
 - FastAPI application and routers across project-domain areas.
 - Workspace context, path resolution and manager-registry modules.
 - React/Vite client with typed state and graph visualization dependencies.
-- Test files covering server authentication and workspace behavior, among other areas; tests were not run for this preparation.
+- Test suites for server authentication and workspace behavior, among other areas, are included in the repository.
 
 ## Technical challenges and design decisions
 
@@ -51,11 +51,11 @@ Python and FastAPI on the service side; React, Vite and TypeScript in the fronte
 - **Validation before analysis:** required fields and references can be checked before graph and AI-oriented workflows consume them.
 - **Workspace abstraction:** path and context resolution make the active workspace explicit.
 - **Separate interface and domain behavior:** the browser uses API boundaries while Python modules own loading and analysis.
-- **Export as a product capability:** the README documents project exports; the exact output may contain private material and is deliberately not reproduced here.
+- **Export boundaries:** project exports can contain project-specific material, so the scope of exported data is an important design consideration.
 
 ## Current status and limitations
 
-The code and documentation support describing a substantial prototype. This audit did not run the application, inspect private manuscripts, verify all routes, or validate export contents. No claim is made that all workspace, authentication, AI or export paths are production-ready.
+WBS is a substantial software prototype and is not presented as production-ready. Behavior across all routes, workspace and authentication cases, and export paths requires broader evaluation. Export responses may contain project-specific material, making clear workspace and export boundaries important to the system's design.
 
 ## Lessons learned
 
@@ -64,8 +64,3 @@ The code and documentation support describing a substantial prototype. This audi
 - Graph views become more useful when analysis reports structural warnings rather than only drawing edges.
 - Public technical storytelling can explain the architecture without exposing the creative material stored in it.
 
-## Evidence checked
-
-Private-source review covered the project overview, Python domain and analysis components, API and workspace layers, frontend structure, and test collection. No private narrative material or exact repository paths are included here.
-
-**Confidence:** high for the listed architectural components; medium for feature completeness; runtime, security and production suitability not verified.

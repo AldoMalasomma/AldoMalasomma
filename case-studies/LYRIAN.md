@@ -6,7 +6,7 @@
 
 ## Overview
 
-Lyrian combines the HybridOctoMem memory runtime with a cognitive turn pipeline, policy and trust modules, a Flask API, and a React/Vite interface. Earlier names including ANDY_2 and Janus are historical phases documented by the current repository; the canonical project is Lyrian.
+Lyrian combines the HybridOctoMem memory runtime with a cognitive turn pipeline, policy and trust modules, a Flask API, and a React/Vite interface. Earlier names including ANDY_2 and Janus are historical phases documented by the project; the canonical project is Lyrian. The Janus name here refers to Lyrian's history and is distinct from Project Janus/RCI associated with the Reflexive Coherence Model research program.
 
 ## Engineering problem
 
@@ -14,7 +14,7 @@ An interactive assistant needs more than a model call: it must assemble relevant
 
 ## Architectural approach
 
-The backend creates shared services for chat, activity, memory and cognition. A cognitive turn parses the input, builds context, applies an ethos gate, calls an LLM adapter, refines output and optionally records a learning signal. The inspected adapter uses an Ollama-backed local model path. A separate memory client wraps the HybridOctoMem runtime for backend services. The React/Vite frontend exposes dashboard, chat, memory, narrative and ethics views through the Flask API.
+The backend creates shared services for chat, activity, memory, and cognition. A memory client connects backend services to the HybridOctoMem runtime. During a cognitive turn, the system interprets input and assembles context before applying an ethos gate and calling an LLM adapter; it then refines the output and may record a learning signal. The adapter provides an Ollama-backed local-model path. The React/Vite frontend exposes dashboard, chat, memory, narrative, and ethics views through the Flask API.
 
 ```mermaid
 flowchart LR
@@ -32,11 +32,11 @@ flowchart LR
 
 The diagram describes code-level flow. It does not claim that policy checks guarantee safe output or that learning is autonomous model training.
 
-## Verified technologies
+## Technology Stack
 
 Python with Flask for the API, React/Vite for the dashboard, PyTorch in the memory runtime, and an Ollama-backed model adapter. These are implementation dependencies and integration points, not claims about model quality or deployment scale.
 
-## Implemented capabilities visible in source
+## Implemented Capabilities
 
 - Flask application and route modules for chat, memory, narrative, status, ethics and logs.
 - Shared service container for backend-facing services.
@@ -44,7 +44,7 @@ Python with Flask for the API, React/Vite for the dashboard, PyTorch in the memo
 - Ollama adapter with a readable fallback when the local model service reports an error.
 - Memory runtime and wrapper, with supporting cognitive and resource modules.
 - React/Vite views and state slices for the product areas named in the README.
-- Backend and HybridOctoMem test files exist; tests were not run for this preparation.
+- Backend and HybridOctoMem test suites are included in the repository.
 
 ## Technical challenges and design decisions
 
@@ -56,7 +56,7 @@ Python with Flask for the API, React/Vite for the dashboard, PyTorch in the memo
 
 ## Current status and limitations
 
-The project README explicitly labels Lyrian an experimental prototype. Local model availability, memory quality, policy effectiveness, long-term behavior and resource requirements need runtime evaluation. The presence of ethics/trust modules is not evidence of a safety guarantee. This preparation did not execute the backend, model, browser application or tests.
+Lyrian is an experimental prototype rather than a finished product. Local model availability, memory quality, policy effectiveness, long-term behavior, and resource requirements are not established. Ethics and trust modules are application components, not evidence of a safety guarantee.
 
 ## Lessons learned
 
@@ -65,8 +65,3 @@ The project README explicitly labels Lyrian an experimental prototype. Local mod
 - Memory retrieval and response quality need task-based evaluation; module presence alone cannot establish useful recall.
 - A research prototype should state its limits as plainly as its architecture.
 
-## Evidence checked
-
-Private-source review covered the README and technical documentation, backend entry points and shared services, cognitive pipeline modules, memory adapter, frontend views, and test collection. Exact private source paths and prompt or memory contents are omitted.
-
-**Confidence:** high for repository structure and orchestration stages; medium for runtime integration; model quality, privacy behavior and system-level safety not independently verified.

@@ -29,19 +29,19 @@ flowchart LR
     J --> V[Policy comparison and analysis]
 ```
 
-The diagram describes the implemented experiment structure; it does not assert that the learned policy outperforms the baseline.
+The diagram summarizes the experiment architecture and does not imply that learned policies outperform the baseline.
 
-## Verified technologies
+## Technology Stack
 
 Python 3.11+ package, deterministic simulation and experiment modules, JSONL audit/replay artifacts, and Python `unittest` test files. The package manifest does not declare a machine-learning framework dependency for the documented baseline prototype.
 
-## Implemented capabilities visible in source
+## Implemented Capabilities
 
 - Deterministic cell/environment modules and a runnable simulation entry point.
 - Baseline and planning modules plus neural and reinforcement-learning experiment modules.
 - Scenario generation, policy comparison, evaluation records and diagnostics.
 - Audit/logging and replay utilities.
-- Test files for core state, replay, audit, RL environment and experiment helpers; tests were not run for this preparation.
+- Test suites for core state, replay, audit, the RL environment, and experiment helpers are included in the repository.
 - A lightweight browser “microscope” interface documented in the project README.
 
 ## Technical challenges and design decisions
@@ -53,9 +53,7 @@ Python 3.11+ package, deterministic simulation and experiment modules, JSONL aud
 
 ## Current status and limitations
 
-The source contains simulation, model and evaluation infrastructure. It does not establish general intelligence, biological equivalence, robust learning or scientifically validated results. The project roadmap calls its V1 completion estimate an internal planning estimate, not a scientific metric; this case study intentionally omits that percentage. No experiment or test was rerun for this publication draft.
-
-The repository includes a status document whose source-location and prior verification statements refer to an earlier staging layout. Those historical test results must not be presented as current verification without a fresh, owner-approved run.
+The project includes simulation and evaluation infrastructure, alongside experimental neural-policy and reinforcement-learning modules. Their presence does not establish general intelligence, biological equivalence, robust learning, or scientifically validated results; any findings must be interpreted within their specific simulation and evaluation protocols.
 
 ## Lessons learned
 
@@ -64,8 +62,3 @@ The repository includes a status document whose source-location and prior verifi
 - Evaluate policies in closed loop and retain failure cases; a higher aggregate score is not sufficient evidence of better behavior.
 - Separate code-level experimental capability from independently validated scientific conclusions.
 
-## Evidence checked
-
-Private-source review covered package metadata, simulation and policy components, neural and reinforcement-learning experiment modules, evaluation/replay/audit tooling, tests, and the protocol, anomaly and roadmap documents. Exact private source paths and unverified numerical results are omitted.
-
-**Confidence:** high for implemented modules and documented evaluation structure; medium for experiment behavior; scientific validity and current test results not verified.
