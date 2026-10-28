@@ -1,0 +1,72 @@
+# HIVECORE
+
+**A locally operated coordination layer for persistent AI-agent teams**  
+**Source:** private development repository  
+**Status:** development project; no production-readiness claim
+
+## Overview
+
+HIVECORE explores how multiple coding and task-focused agents can work as a continuing team rather than as disconnected sessions. It provides a local operator interface and a workflow model for collecting observations, forming proposals, reviewing decisions and handing work between agents.
+
+The project README describes HIVECORE as a maintained derivative of the Agency codebase. This case study summarizes its high-level architecture and makes no claim about public source availability or licensing.
+
+## Engineering problem
+
+Agent tools often have different execution environments, workspace models and output conventions. The project addresses the coordination work around them: identity and configuration, persistent project records, handoffs, operator visibility and human decision points.
+
+## Architectural approach
+
+The inspected source has a Python application with a web interface and CLI, configuration and workflow modules, provider/tool integrations, workspace adapters, and file-backed project records. Integration adapters normalize execution results while keeping tool-specific behavior at the boundary. The workflow surface gives the operator a place to inspect results and make decisions.
+
+```mermaid
+flowchart LR
+    H[Human operator] --> UI[Local web interface / CLI]
+    UI --> W[Workflow and project records]
+    W --> A[Provider and tool adapters]
+    A --> E[Agent tools and workspaces]
+    E --> O[Observations and handoffs]
+    O --> W
+    W --> D[Human review and decision]
+    D --> W
+```
+
+The diagram is a high-level reading of the source modules, not a deployment topology or security certification.
+
+## Verified technologies
+
+Python 3.11+, FastAPI/Starlette, Uvicorn, Jinja2, PyYAML and Click are declared or used by the application and package configuration. The project also includes command-line and browser interfaces; those interfaces were not runtime-tested for this draft.
+
+## Implemented capabilities visible in source
+
+- Python CLI and web application entry points.
+- Provider/tool integration modules and a shared integration contract.
+- Workspace adapter modules for several coding environments.
+- Workflow and handoff processing, including structured project context.
+- Human-facing observation, proposal and decision surfaces.
+- Configuration and authentication modules.
+- Automated test files covering CLI, integrations, workspaces and workflow behavior; tests were not run for this case study.
+
+## Technical challenges and design decisions
+
+- **Integration boundaries:** shared result and identity types reduce coupling to one agent tool.
+- **Persistent, inspectable state:** project records are represented through files and structured configuration rather than a required central database.
+- **Human oversight:** the workflow includes review and decision stages instead of claiming unattended autonomy.
+- **Workspace-specific behavior:** adapters make workspace integration explicit rather than assuming every tool uses the same execution model.
+- **Compatibility:** the existing `agency` package and CLI names remain, even though the product is HIVECORE.
+
+## Current status and limitations
+
+This is a private development platform, not a verified production service. Static inspection confirms the modules and tests exist, but this preparation did not execute the service, tests, provider integrations, scheduler or workspace operations. Provider behavior depends on external tools and local configuration. Security, isolation and reliability claims require a separate threat-model and runtime review. This case study does not offer the source code or declare a license for it.
+
+## Lessons learned
+
+- Treating integrations as adapters makes a heterogeneous agent fleet easier to reason about.
+- Persistent workflow records help expose what agents did and what a human decided.
+- Human approval is a product-level control and should be visible in the architecture, not added as an afterthought.
+- A local orchestration prototype should describe its tested boundaries precisely and avoid “autonomous platform” claims.
+
+## Evidence checked
+
+Private-source review covered the project overview and license declaration, package metadata, application and CLI entry points, integration and workspace components, workflow modules, and the test collection. Exact private source paths are intentionally omitted from this public-facing draft.
+
+**Confidence:** high for module and dependency claims; medium for the end-to-end workflow interpretation; runtime and production behavior not verified.
